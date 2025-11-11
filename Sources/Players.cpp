@@ -1,35 +1,21 @@
-#include <string>
-#include <vector>
+#include "../Headers/Players.h"
 
-class Players {
-    private:
-        int playerNum;
-        std::vector<std::string> hand;
+Players::Players(int playerNum) {
+    this->playerNum = playerNum;
+}
 
-    public:
-        Players(int playerNum) {
-            this->playerNum = playerNum;
-        }
+int Players::getPlayerNum() {
+    return playerNum;
+}
 
-        int getPlayerNum() {
-            return playerNum;
-        }
+std::vector<std::string> Players::getPlayerHand() {
+    return hand;
+}
 
-        std::vector<std::string> getPlayerHand() {
-            return hand;
-        }
+void Players::addCard(std::string card) {
+    hand.push_back(card);
+}
 
-        void setPlayerHand(std::vector<std::string> hand) {
-            this->hand = hand;
-        }
-
-        void addCard(std::string card) {
-            hand.push_back(card);
-        }
-
-        void discardCard(std::string card) {
-            
-        }
+void Players::discardCard(std::string card) {
     
-
-};
+}
