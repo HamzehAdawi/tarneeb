@@ -39,3 +39,13 @@
 
 # debug information files
 *.dwo
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.ipch
+*.obj
+*.exe
+*.dll
+*.pdb
