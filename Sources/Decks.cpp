@@ -28,7 +28,7 @@ class Decks {
             {"Spades", {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"}}
         };
 
-        std::vector<std::string, int> cards;
+        std::vector<std::string> cards;
 
     
     public:
@@ -41,6 +41,14 @@ class Decks {
 
         std::map<std::string, std::vector<std::string>> getSuites() {
             return suites;
+        }
+
+        std::vector<std::string>& getCards() {
+            return cards;
+        }
+
+        void shuffleCards() {
+            // minimal implementation: no-op for now
         }
 
 };

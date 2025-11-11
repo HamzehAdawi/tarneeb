@@ -8,6 +8,8 @@
 class GameOfTarneeb {
     private:
         int playerCount;
+        int currTurn = 0;
+        std::vector<std::string>* cards;
         std::vector<std::vector<std::string>> playersHands; 
         std::vector<Players> players;
 
@@ -15,7 +17,7 @@ class GameOfTarneeb {
     public:
         Decks deck;
         GameOfTarneeb(int players);
-        std::vector<int> handOutCards();
+    void handOutCards();
         void startGame();
 
 };
