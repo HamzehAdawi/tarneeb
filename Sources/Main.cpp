@@ -10,7 +10,7 @@ int main() {
     std::cout << "   |_/_/    \\_\\_|  \\_\\_| \\_|______|______|____/ " << std::endl;
 
     while (true) {    
-        std::cout << "\ns - Start Game, q - Quit" << std::endl;
+        std::cout << "\nGuide: s - Start Game, q - Quit" << std::endl;
         std::string input; 
         std::cin >> input;
 
