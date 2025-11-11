@@ -24,7 +24,6 @@ void GameOfTarneeb::startGame() {
         for (int i = 0; i < handoutCardAmount; i++) {
             
             {
-                // Build ASCII art for each card first, then print them side-by-side (columnar)
                 std::vector<std::vector<std::string>> asciiCards;
 
                 for (std::string cardAndSuit: players[0].getPlayerHand()) {
@@ -40,7 +39,7 @@ void GameOfTarneeb::startGame() {
                             else if (token == "King") rankStr = "K";
                             else if (token == "Queen") rankStr = "Q";
                             else if (token == "Jack") rankStr = "J";
-                            else rankStr = token; // numbers like 10, 9, 8...
+                            else rankStr = token; 
                             numValue = token;
                         } else {
                             if (token == "Spades") suitStr = deck.getSuit(Suits::SPADE);
@@ -50,17 +49,14 @@ void GameOfTarneeb::startGame() {
                         }
                     }
 
-                    // split suitStr into lines (Deck::getSuit returns two lines with '\n')
                     std::vector<std::string> suitLines;
                     std::istringstream sss(suitStr);
                     std::string line;
                     while (std::getline(sss, line)) {
                         if (!line.empty()) suitLines.push_back(line);
                     }
-                    // ensure missing suit lines are full-width card interior rows (with '|' edges)
                     while (suitLines.size() < 2) suitLines.push_back(std::string("|      |"));
 
-                    // Construct fixed-height ASCII card (5 lines)
                     std::vector<std::string> cardLines;
                     cardLines.push_back(".------.");
 
@@ -68,22 +64,17 @@ void GameOfTarneeb::startGame() {
                     else if (!rankStr.empty()) cardLines.push_back(std::string("|") + rankStr + "     |");
                     else cardLines.push_back("|?     |");
 
-                    // suitLines contain e.g. "|  /\\  |" etc.
                     cardLines.push_back(suitLines[0]);
                     cardLines.push_back(suitLines[1]);
-                    // bottom of card should show the raw edge as requested: `------'
                     cardLines.push_back("|______|'");
 
-                    // Normalize each line to a fixed width to avoid cutting off bottoms/columns
                     auto normalize = [](const std::string &s, size_t w) {
                         if (s.size() >= w) return s.substr(0, w);
-                        // If line starts and ends with '|' keep edges and pad inner content
                         if (s.size() >= 2 && s.front() == '|' && s.back() == '|') {
                             std::string inner = s.substr(1, s.size() - 2);
                             if (inner.size() < w - 2) inner += std::string((w - 2) - inner.size(), ' ');
                             return std::string("|") + inner + std::string("|");
                         }
-                        // Otherwise pad on the right
                         return s + std::string(w - s.size(), ' ');
                     };
 
@@ -92,10 +83,9 @@ void GameOfTarneeb::startGame() {
                     asciiCards.push_back(cardLines);
                 }
 
-                // Print cards side-by-side in chunks so lines don't wrap in narrow terminals
                 if (!asciiCards.empty()) {
                     const int rows = (int)asciiCards[0].size();
-                    const size_t cardsPerRow = 8; // adjust if you want more/less per output row
+                    const size_t cardsPerRow = 8; 
                     size_t start = 0;
                     while (start < asciiCards.size()) {
                         size_t end = std::min(start + cardsPerRow, asciiCards.size());
