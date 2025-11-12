@@ -7,6 +7,8 @@
 #include "Deck.h"
 #include "Suits.h"
 #include "thread"
+#include <set>
+#include <random>
 
 class GameOfTarneeb {
     private:
@@ -24,5 +26,6 @@ class GameOfTarneeb {
         void startGame();
         void cycleTurn();
         void printCards();
+        double calculateWinProbability(const std::vector<std::string>& handStrings, int trials);
         std::vector<std::string>& getSpentCards();
 };
