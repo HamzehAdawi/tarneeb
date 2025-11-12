@@ -55,6 +55,9 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "thread": "cpp",
+        "ratio": "cpp",
+        "stop_token": "cpp"
     }
 }

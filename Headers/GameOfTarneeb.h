@@ -6,6 +6,7 @@
 #include "Players.h"
 #include "Deck.h"
 #include "Suits.h"
+#include "thread"
 
 class GameOfTarneeb {
     private:
@@ -22,5 +23,6 @@ class GameOfTarneeb {
         void handOutCards();
         void startGame();
         void cycleTurn();
+        void printCards();
         std::vector<std::string>& getSpentCards();
 };
